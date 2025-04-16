@@ -23,9 +23,9 @@
     <x-user-bar />
     <div class="d-flex pt-2">
         <x-side-bar />
-        <div class="m-3 p-3">
-            {{ $slot }}
-        </div>
+
+        {{ $slot }}
+
     </div>
 
     <!-- resources -->
