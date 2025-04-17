@@ -24,12 +24,27 @@ class ProfileController extends Controller
 
         // check if the current password is correct
         if (!password_verify($request->current_password, $user->password)) {
-            return redirect()->back()->with('error','Current password is incorrect');
+            return redirect()->back()->with('error', 'Current password is incorrect');
         }
 
         // update password in database
         $user->password = bcrypt($request->new_password);
         $user->save();
-        return redirect()->back()->with('success','Password updated successfully');
+        return redirect()->back()->with('success', 'Password updated successfully');
+    }
+
+    public function updateUserData(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|min:3|max:255',
+            'email' => 'required|email|max:255|unique:users,email,' . auth()->id(),
+        ]);
+
+        // update user data
+        $user = auth()->user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        return redirect()->back()->with('success_change_data', 'Profile updated successfully');
     }
 }
