@@ -45,4 +45,43 @@ class DepartmentController extends Controller
 
         return redirect()->route('departments');
     }
+
+    public function editDepartment($id)
+    {
+        if (!Auth::user()->can('admin')) {
+            abort(403, 'You are not authorized to access this page');
+        }
+
+        // check if id === 1
+        if (intval($id) === 1) {
+            return redirect()->route('departments');
+        }
+
+        $department = Department::findOrFail($id);
+
+        return view('department.edit-department', compact('department'));
+    }
+
+    public function updateDepartment(Request $request)
+    {
+        if (!Auth::user()->can('admin')) {
+            abort(403, 'You are not authorized to access this page');
+        }
+
+        $id = $request->id;
+
+        // check if id === 1;
+        if (intval($id) === 1) {
+            return redirect()->route('departments');
+        }
+
+        $request->validate([
+            'id' => 'required',
+            'name' => "required|string|min:3|max:50|unique:departments,name,$id"
+        ]);
+
+        $department = Department::findOrFail($id);
+        $department->update(['name' => $request->name]);
+        return redirect()->route('departments');
+    }
 }
