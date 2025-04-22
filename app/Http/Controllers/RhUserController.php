@@ -18,4 +18,13 @@ class RhUserController extends Controller
 
         return view('colaborators.rh-users', compact('colaborators'));
     }
+
+    public function newColaborator()
+    {
+        if (!Auth::user()->can('admin')) {
+            abort(403, 'You are not authorized to access this page');
+        }
+
+        return view('colaborators.add-rh-user');
+    }
 }
