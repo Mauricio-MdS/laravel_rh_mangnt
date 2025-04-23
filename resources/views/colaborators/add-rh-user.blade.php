@@ -39,9 +39,10 @@
                                 <div class="flex-grow-1 pe-3">
                                     <label for="select_department">Department</label>
                                     <select class="form-select" id="select_department" name="select_department">
-                                        @foreach ($departments as $department)
+                                        <option value="2">Recursos Humanos</option>
+                                        {{-- @foreach ($departments as $department)
                                             <option value="{{ $department->id }}">{{ $department->name }}</option>
-                                        @endforeach
+                                        @endforeach --}}
                                     </select>
                                     @error('select_department')
                                         <div class="text-danger">{{ $message }}</div>

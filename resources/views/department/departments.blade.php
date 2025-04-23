@@ -26,7 +26,7 @@
                             <td>{{ $department->name }}</td>
                             <td>
                                 <div class="d-flex gap-3 justify-content-end">
-                                    @if ($department->id === 1)
+                                    @if ($department->id < 3)
                                         <i class="fa-solid fa-lock"></i>
                                     @else
                                         <a href="{{ route('departments.edit-department', ['id' => $department->id]) }}"
