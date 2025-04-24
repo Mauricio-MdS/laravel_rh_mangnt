@@ -20,7 +20,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Role</th>
-                    <th>Permissions</th>
+                    <th>Salary</th>
                     <th>Admission date</th>
                     <th>City</th>
                     <th></th>
@@ -31,7 +31,7 @@
                             <td>{{ $colaborator->name }}</td>
                             <td>{{ $colaborator->email }}</td>
                             <td>{{ $colaborator->role }}</td>
-                            <td>{{ implode(',', json_decode($colaborator->permissions)) }}</td>
+                            <td>{{ $colaborator->detail->salary }} $</td>
                             <td>{{ $colaborator->detail->admission_date }}</td>
                             <td>{{ $colaborator->detail->city }}</td>
                             <td>
@@ -39,7 +39,8 @@
                                     @if ($colaborator->id === 1)
                                         <i class="fa-solid fa-lock"></i>
                                     @else
-                                        <a href="#" class="btn btn-sm btn-outline-dark ms-3"><i
+                                        <a href="{{ route('colaborators.edit-colaborator', ['id' => $colaborator->id]) }}"
+                                            class="btn btn-sm btn-outline-dark ms-3"><i
                                                 class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
                                         <a href="#" class="btn btn-sm btn-outline-dark"><i
                                                 class="fa-regular fa-trash-can me-2 ms-3"></i>Delete</a>
