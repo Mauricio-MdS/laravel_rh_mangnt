@@ -43,4 +43,5 @@ Route::middleware('auth')->group(function () {
 
     // admin colaborators list
     Route::get('/colaborators', [ColaboratorsController::class, 'index'])->name('colaborators.all-colaborators');
+    Route::get('/colaborators/details/{id}', [ColaboratorsController::class, 'showDetails'])->name('colaborators.details');
 });
