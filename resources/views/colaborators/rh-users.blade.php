@@ -49,10 +49,11 @@
                                     @if ($colaborator->id === 1)
                                         <i class="fa-solid fa-lock"></i>
                                     @else
-                                        <a href="{{ route('colaborators.rh.edit-colaborator', ['id' => $colaborator->id]) }}"
-                                            class="btn btn-sm btn-outline-dark ms-3"><i
-                                                class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
                                         @if (empty($colaborator->deleted_at))
+                                            <a href="{{ route('colaborators.rh.edit-colaborator', ['id' => $colaborator->id]) }}"
+                                                class="btn btn-sm btn-outline-dark ms-3"><i
+                                                    class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
+
                                             <a href="{{ route('colaborators.rh.delete-colaborator', ['id' => $colaborator->id]) }}"
                                                 class="btn btn-sm btn-outline-dark"><i
                                                     class="fa-regular fa-trash-can me-2 ms-3"></i>Delete</a>

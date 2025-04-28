@@ -37,6 +37,11 @@ class ColaboratorsController extends Controller
             ->where('id', $id)
             ->first();
 
+        // check if colaborator exists
+        if (!$colaborator) {
+            abort(404);
+        }
+
         return view('colaborators.show-details', compact('colaborator'));
     }
 
