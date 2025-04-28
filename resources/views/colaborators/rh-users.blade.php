@@ -8,11 +8,13 @@
         @if ($colaborators->count() === 0)
             <div class="text-center my-5">
                 <p>No colaborators found.</p>
-                <a href="{{ route('colaborators.rh.new-colaborator') }}" class="btn btn-primary">Create a new colaborator</a>
+                <a href="{{ route('colaborators.rh.new-colaborator') }}" class="btn btn-primary">Create a new
+                    colaborator</a>
             </div>
         @else
             <div class="mb-3">
-                <a href="{{ route('colaborators.rh.new-colaborator') }}" class="btn btn-primary">Create a new colaborator</a>
+                <a href="{{ route('colaborators.rh.new-colaborator') }}" class="btn btn-primary">Create a new
+                    colaborator</a>
             </div>
 
             <table class="table" id="table">
@@ -50,8 +52,15 @@
                                         <a href="{{ route('colaborators.rh.edit-colaborator', ['id' => $colaborator->id]) }}"
                                             class="btn btn-sm btn-outline-dark ms-3"><i
                                                 class="fa-regular fa-pen-to-square me-2"></i>Edit</a>
-                                        <a href="{{ route('colaborators.rh.delete-colaborator', ['id' => $colaborator->id]) }}" class="btn btn-sm btn-outline-dark"><i
-                                                class="fa-regular fa-trash-can me-2 ms-3"></i>Delete</a>
+                                        @if (empty($colaborator->deleted_at))
+                                            <a href="{{ route('colaborators.rh.delete-colaborator', ['id' => $colaborator->id]) }}"
+                                                class="btn btn-sm btn-outline-dark"><i
+                                                    class="fa-regular fa-trash-can me-2 ms-3"></i>Delete</a>
+                                        @else
+                                            <a href="{{ route('colaborators.rh.restore', ['id' => $colaborator->id]) }}"
+                                                class="btn btn-sm btn-outline-dark"><i
+                                                    class="fa-solid fa-trash-arrow-up me-2 ms-3"></i>Restore</a>
+                                        @endif
                                     @endif
                                 </div>
                             </td>
