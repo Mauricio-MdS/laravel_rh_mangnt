@@ -52,17 +52,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/rh-users/delete/{id}', [RhUserController::class, 'deleteRhColaborator'])->name('colaborators.rh.delete-colaborator');
     Route::get('/rh-users/delete-confirm/{id}', [RhUserController::class, 'deleteRhColaboratorConfirm'])->name('colaborators.rh.delete-confirm');
     Route::get('/rh-users/restore/{id}', [RhUserController::class, 'restoreRhColaborator'])->name('colaborators.rh.restore');
+    
 
     Route::get('/rh-users/managements/home', [RhManagementController::class, 'home'])->name('rh.management.home');
     Route::get('/rh-users/managements/new-colaborator', [RhManagementController::class, 'newColaborator'])->name('rh.management.new-colaborator');
     Route::post('/rh-users/managements/create-colaborator', [RhManagementController::class, 'createColaborator'])->name('rh.management.create-colaborator');
+    Route::get('rh-users/management/edit-colaborator/{id}', [RhManagementController::class, 'editColaborator'])->name('rh.management.edit-colaborator');
+    Route::post('rh-users/management/update-colaborator', [RhManagementController::class, 'updateColaborator'])->name('rh.management.update-colaborator');
+    Route::get('rh-users/management/details/{id}', [RhManagementController::class, 'showDetails'])->name('rh.management.details');
 
     // admin colaborators list
     Route::get('/colaborators', [ColaboratorsController::class, 'index'])->name('colaborators.all-colaborators');
     Route::get('/colaborators/details/{id}', [ColaboratorsController::class, 'showDetails'])->name('colaborators.details');
     Route::get('/colaborators/delete/{id}', [ColaboratorsController::class, 'deleteColaborator'])->name('colaborators.delete');
     Route::get('/colaborators/delete-confirm/{id}', [ColaboratorsController::class, 'deleteColaboratorConfirm'])->name('colaborators.delete-confirm');
-    Route::get('/colaborators/restore/{id', [ColaboratorsController::class, 'restoreColaborator'])->name('colaborators.restore');
+    Route::get('/colaborators/restore/{id}', [ColaboratorsController::class, 'restoreColaborator'])->name('colaborators.restore');
 
     // admin routes
     Route::get('/admin/home', [AdminController::class, 'home'])->name('admin.home');

@@ -1,4 +1,4 @@
-<x-layout-app page-title="New RH User">
+<x-layout-app page-title="Edit RH User">
 
     <div class="w-100 p-4">
 
