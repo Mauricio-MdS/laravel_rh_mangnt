@@ -32,5 +32,10 @@ class AppServiceProvider extends ServiceProvider
             return auth()->user()->role === 'rh';
         });
 
+        // check if user is colaborator
+        Gate::define('colaborator', function (): bool {
+            return auth()->user()->role === 'colaborator';
+        });
+
     }
 }

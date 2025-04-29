@@ -86,4 +86,15 @@ class ColaboratorsController extends Controller
         $colaborator->restore();
         return redirect()->route('colaborators.all-colaborators');
     }
+
+    public function home()
+    {
+        if (!Auth::user()->can('colaborator'))
+            abort(403, 'You are not authorized to access this page');
+
+        // get colaborator data
+        $colaborator = User::with('detail', 'department')->findOrFail(Auth::user()->id);
+
+        return view('colaborators.show-details', compact('colaborator'));
+    }
 }
