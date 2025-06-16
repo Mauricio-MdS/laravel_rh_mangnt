@@ -9,7 +9,7 @@
 >> testar processo de login com sucesso para o perfil de colaborador
 
 >> testar a inserção de um novo user rh com o perfil do admin
-- testar a inserção de um novo colaborador com o perfil do rh
+>> testar a inserção de um novo colaborador com o perfil do rh
 
 - testar se um admin, após login com sucesso, consegue ver a página de colaboradores rh
 - testar se, sem usuário logado, é possível aceder à página home
