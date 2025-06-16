@@ -15,3 +15,9 @@ it('tests if user logged in can access the login page', function () {
     auth()->loginUsingId(1);
     expect($this->get('/login')->status())->not()->toBe(200);
 });
+
+it('tests if user logged in can access the recover password page', function () {
+    addAdminUser();
+    auth()->loginUsingId(1);
+    expect($this->get('/forgot-password')->status())->not()->toBe(200);
+});
